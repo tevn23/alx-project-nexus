@@ -325,5 +325,153 @@ python manage.py runserver
 - Review and rating system
 - Advanced search and filtering
 
+---
+
+## ⚙️ Phase 1: Database & Configuration Setup (COMPLETED)
+
+This phase includes all database and configuration steps needed to run the project locally.
+
+### Phase 1 Completion Checklist ✅
+
+- [x] **Environment Variables** - `.env.example` created with all necessary configuration templates
+- [x] **Django Settings Updated** - `ProductsConfig` registered in `INSTALLED_APPS`
+- [x] **URL Routing Configured** - Products app URLs wired into main Django configuration
+- [x] **Git Ignore Setup** - `.gitignore` configured for Python, virtual environments, and sensitive files
+
+### Setup Instructions for Local Development
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/tevn23/alx-project-nexus.git
+cd alx-project-nexus/digital_marketplace
+```
+
+#### 2. Create Virtual Environment
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+#### 3. Install Dependencies
+```bash
+# Install all required packages
+pip install -r requirements.txt
+```
+
+#### 4. Configure Environment Variables
+```bash
+# Copy example file and customize
+cp .env.example .env
+
+# Edit .env with your settings (use any text editor)
+# Important: Change SECRET_KEY for production
+```
+
+#### 5. Run Migrations
+```bash
+# Create database migrations
+python manage.py makemigrations
+
+# Apply migrations to database
+python manage.py migrate
+```
+
+#### 6. Create Superuser (Admin)
+```bash
+# Create Django admin user
+python manage.py createsuperuser
+
+# Follow prompts to set username, email, and password
+```
+
+#### 7. Run Development Server
+```bash
+# Start Django development server
+python manage.py runserver
+
+# Server will be available at http://127.0.0.1:8000/
+```
+
+#### 8. Test the API
+```bash
+# Access Django admin
+http://127.0.0.1:8000/admin/
+
+# Access API endpoints
+http://127.0.0.1:8000/api/products/
+http://127.0.0.1:8000/api/products/docs/  # Swagger docs (if configured)
+```
+
+### Database Choices
+
+#### For Development (Recommended for beginners):
+```bash
+# SQLite (default) - already configured
+# No additional setup needed, database is created in db.sqlite3
+```
+
+#### For Production/Advanced (Optional):
+```bash
+# PostgreSQL - Update .env:
+DB_ENGINE=postgresql
+DB_NAME=digital_marketplace
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_HOST=localhost
+DB_PORT=5432
+
+# Then install:
+pip install psycopg2-binary
+```
+
+### Project Structure After Phase 1
+
+```
+digital_marketplace/
+├── digital_marketplace/             # Django project config (Phase 1 ✅)
+│   ├── settings.py                 # Django settings with INSTALLED_APPS
+│   ├── urls.py                     # URL routing configured
+│   ├── wsgi.py
+│   └── __init__.py
+├── apps/                           # Django apps package
+│   ├── products/                   # Products app (Phase 1 ✅)
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py                 # Wired into main config
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   └── __init__.py
+│   └── __init__.py
+├── manage.py                       # Django management
+├── requirements.txt                # Phase 1 ✅
+├── .env.example                    # Phase 1 ✅
+├── .gitignore                      # Phase 1 ✅
+└── db.sqlite3                      # Created after migrations
+```
+
+### Troubleshooting
+
+**Issue: `ModuleNotFoundError: No module named 'django'`**
+- Solution: Ensure virtual environment is activated and run `pip install -r requirements.txt`
+
+**Issue: `django.db.utils.OperationalError: no such table`**
+- Solution: Run migrations: `python manage.py migrate`
+
+**Issue: Port 8000 already in use**
+- Solution: Run on different port: `python manage.py runserver 8001`
+
+### Next Steps (Phase 2)
+- Write comprehensive tests for the API
+- Test API endpoints with Postman or Insomnia
+- Implement error handling and validation
+
+
 
 **Happy Coding! 🚀**
