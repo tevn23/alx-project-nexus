@@ -256,4 +256,74 @@ December 2025
 
 ---
 
+---
+
+## 🚀 Digital Marketplace - Django REST API Backend
+
+A modern Django REST Framework implementation of a digital product marketplace platform.
+
+### Project Structure
+
+```
+digital_marketplace/
+├── digital_marketplace/          # Django project configuration
+│   ├── settings.py              # Django settings
+│   ├── urls.py                  # Main URL routing
+│   ├── wsgi.py                  # WSGI configuration
+│   └── __init__.py              # Package initialization
+├── apps/                        # Django applications package
+│   ├── __init__.py
+│   └── products/                # Products application
+│       ├── models.py            # Product model definition
+│       ├── serializers.py       # DRF serializers
+│       ├── views.py             # ViewSet implementation
+│       ├── urls.py              # App URL routing
+│       ├── admin.py             # Django admin configuration
+│       ├── apps.py              # App configuration
+│       └── __init__.py
+├── manage.py                    # Django management script
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation
+```
+
+### Key Features
+
+- **Products Management**: Complete CRUD API for digital products
+- **REST API**: Fully functional REST API with DRF
+- **Admin Interface**: Django admin for product management
+- **Scalable Architecture**: Modular app structure for easy expansion
+
+### Getting Started
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Create superuser
+python manage.py createsuperuser
+
+# Start development server
+python manage.py runserver
+```
+
+### API Endpoints
+
+- `GET /api/products/` - List all products
+- `POST /api/products/` - Create new product
+- `GET /api/products/{id}/` - Retrieve product details
+- `PUT /api/products/{id}/` - Update product
+- `DELETE /api/products/{id}/` - Delete product
+
+### Future Enhancements
+
+- Orders management app
+- User authentication and authorization
+- Payment processing integration
+- Review and rating system
+- Advanced search and filtering
+
+
 **Happy Coding! 🚀**
